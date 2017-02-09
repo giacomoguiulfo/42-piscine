@@ -1,4 +1,0 @@
-dn: uid=gguiulfo,ou=january,ou=2017,ou=people,dc=42,dc=us,dc=org
-changetype: modify
-replace: mobile
-mobile: 954-245-7574
