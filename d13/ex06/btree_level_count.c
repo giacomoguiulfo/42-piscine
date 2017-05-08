@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   btree_create_node.c                                :+:      :+:    :+:   */
+/*   btree_level_count.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/27 13:46:29 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/04/20 19:49:46 by gguiulfo         ###   ########.fr       */
+/*   Created: 2017/04/20 20:57:22 by gguiulfo          #+#    #+#             */
+/*   Updated: 2017/04/20 21:18:29 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "ft_btree.h"
 
-t_btree	*btree_create_node(void *item)
+int btree_level_count(t_btree *root)
 {
-	t_btree *node;
+	int lvl_right;
+	int lvl_left;
 
-	node = (t_btree *)malloc(sizeof(t_btree));
-	if (node)
-	{
-		node->left = NULL;
-		node->right = NULL;
-		node->item = item;
-	}
-	return (node);
+	if (root == 0)
+		return (-1);
+	lvl_left = btree_level_count(root->left);
+	lvl_right = btree_level_count(root->right);
+	if (lvl_left > lvl_right)
+		return (lvl_left + 1);
+	else
+		return (lvl_right + 1);
 }

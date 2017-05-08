@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   btree_create_node.c                                :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/27 13:46:29 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/04/20 19:49:46 by gguiulfo         ###   ########.fr       */
+/*   Created: 2017/04/20 19:20:13 by gguiulfo          #+#    #+#             */
+/*   Updated: 2017/04/20 19:56:32 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <stdio.h>
 #include "ft_btree.h"
 
-t_btree	*btree_create_node(void *item)
-{
-	t_btree *node;
+t_btree *btree_create_node(void *item);
 
-	node = (t_btree *)malloc(sizeof(t_btree));
-	if (node)
-	{
-		node->left = NULL;
-		node->right = NULL;
-		node->item = item;
-	}
-	return (node);
+int main()
+{
+	int a = 5;
+	t_btree *node = btree_create_node(&a);
+	printf("%p %p '%d'\n", node->left, node->right, *((int*)node->item));
+	return 0;
 }
